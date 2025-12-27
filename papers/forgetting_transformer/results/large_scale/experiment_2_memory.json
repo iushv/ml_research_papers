@@ -1,0 +1,51 @@
+{
+  "config": {
+    "vocab_size": 5000,
+    "d_model": 256,
+    "num_layers": 4
+  },
+  "parallel": {
+    "128": {
+      "time_ms": 1.9951820373535156,
+      "success": true
+    },
+    "256": {
+      "time_ms": 2.445840835571289,
+      "success": true
+    },
+    "512": {
+      "time_ms": 2.2511959075927734,
+      "success": true
+    },
+    "1024": {
+      "time_ms": 2.4120330810546875,
+      "success": true
+    },
+    "2048": {
+      "time_ms": 2.7457714080810547,
+      "success": true
+    }
+  },
+  "recurrent": {
+    "128": {
+      "time_ms": 60.61239242553711,
+      "success": true
+    },
+    "256": {
+      "time_ms": 121.07758522033691,
+      "success": true
+    },
+    "512": {
+      "time_ms": 241.5778636932373,
+      "success": true
+    },
+    "1024": {
+      "time_ms": 485.50524711608887,
+      "success": true
+    },
+    "2048": {
+      "time_ms": 1000.0318050384523,
+      "success": true
+    }
+  }
+}
