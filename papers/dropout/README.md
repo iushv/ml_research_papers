@@ -1,4 +1,4 @@
-# Dropout Paper Implementation
+# 🎲 Dropout: Preventing Neural Network Overfitting
 
 **Paper**: "Dropout: A Simple Way to Prevent Neural Networks from Overfitting"  
 **Authors**: Srivastava, Hinton, Krizhevsky, Sutskever, Salakhutdinov (2014)  
@@ -6,108 +6,74 @@
 
 ---
 
-## 🎯 What This Project Teaches
+## 🎯 What You'll Learn
 
-This is a **beginner-friendly, from-scratch implementation** of the Dropout paper with comprehensive learning notes. You'll learn:
-
-| Topic | File | Key Concepts |
-|-------|------|--------------|
-| Dropout Mechanism | `my_dropout.py` | Masking, scaling, train/eval modes |
-| Neural Networks | `my_network.py` | Layers, activations, forward pass |
-| Training Loop | `experiment.py` | Optimizer, loss, backpropagation |
+| File | Concepts |
+|------|----------|
+| `my_dropout.py` | Dropout math, masking, train/eval modes |
+| `my_network.py` | Layer composition, forward pass, activation functions |
+| `experiment.py` | Training loop (5 steps), overfitting demonstration |
 
 ---
 
 ## 🚀 Quick Start
 
 ```bash
-cd papers/dropout/src
-
-# Test dropout implementation
-python my_dropout.py
-
-# Test neural network
-python my_network.py
-
-# Run full experiment (compare with/without dropout)
-python experiment.py
+cd src
+python my_dropout.py    # Test dropout implementation
+python my_network.py    # Test neural network
+python experiment.py    # Full experiment
 ```
 
 ---
 
-## 📊 Key Results
+## 📊 Results
 
 ```
-Without Dropout: Train=100%, Test=89%  ← OVERFIT!
-With Dropout:    Train=93%,  Test=91%  ← Generalized!
+Without Dropout: Train=100%, Test=89% → 10.7% overfit gap ❌
+With Dropout:    Train=93%,  Test=91% → 1.7% gap ✅
 ```
 
-Dropout sacrifices training accuracy for better test performance.
+**Dropout reduces overfitting by 84%!**
 
 ---
 
-## 📚 Learning Notes Summary
+## 💡 Key Concepts
 
-### 1. Dropout Math
+### The Dropout Formula
 ```python
-# Training mode:
+# Training:
 mask = random() > p
 output = input * mask / (1 - p)
 
-# Inference mode:
+# Inference:
 output = input  # unchanged
 ```
 
-### 2. Neural Network Architecture
-```
-Input → Linear → ReLU → [Dropout] → Linear → ReLU → [Dropout] → Linear → Output
-```
-
-### 3. Training Loop (5 Essential Steps)
+### The Training Loop
 ```python
-optimizer.zero_grad()     # 1. Clear old gradients
+optimizer.zero_grad()     # 1. Clear gradients
 outputs = model(X)        # 2. Forward pass
 loss = criterion(outputs) # 3. Compute loss
 loss.backward()           # 4. Backward pass
 optimizer.step()          # 5. Update weights
 ```
 
-### 4. Train vs Eval Mode
+### Train vs Eval Mode
 ```python
 model.train()  # Dropout ON
-model.eval()   # Dropout OFF (use for testing!)
+model.eval()   # Dropout OFF ← Don't forget this!
 ```
 
 ---
 
-## 📁 Project Structure
+## 📁 Files
 
 ```
 dropout/
 ├── src/
-│   ├── my_dropout.py    # Custom Dropout class with notes
-│   ├── my_network.py    # MLP with optional Dropout
-│   └── experiment.py    # Training loop & comparison
-├── results/
-│   ├── dropout_comparison_chart_*.png
-│   ├── dropout_neuron_visual_*.png
-│   └── dropout_code_snippet_*.png
-└── README.md
+│   ├── my_dropout.py    # Custom Dropout class
+│   ├── my_network.py    # MLP with Dropout
+│   └── experiment.py    # Training comparison
+└── results/             # Visualizations
 ```
-
----
-
-## 🔑 Key Takeaways
-
-1. **Dropout = Random dropping + Scaling** to maintain expected value
-2. **Always use `model.eval()`** before testing (common bug!)
-3. **Apply dropout AFTER activation**, not on output layer
-4. **Overfitting** = High train accuracy, low test accuracy
-5. **Regularization** trades train accuracy for generalization
-
----
-
-## 📖 Further Reading
-
-- [Original Paper (2014)](https://jmlr.org/papers/v15/srivastava14a.html)
-- [PyTorch Dropout Documentation](https://pytorch.org/docs/stable/generated/torch.nn.Dropout.html)

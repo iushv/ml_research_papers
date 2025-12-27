@@ -1,72 +1,106 @@
-# ArXiv Paper Implementations
+# 🧠 ML Research Papers
 
-A collection of AI/ML research paper implementations with **critical evaluations** and **reproducible experiments**.
+A collection of **from-scratch implementations** of foundational and novel ML/AI research papers, with detailed learning notes and verified experiments.
 
 ---
 
 ## 📚 Implemented Papers
 
-| Paper | Status | Key Result |
-|-------|--------|------------|
-| [Forgetting Transformer (FoX)](papers/forgetting_transformer/) | ✅ Complete | **10% better PPL**, all 6 claims verified |
+| Paper | Year | Key Innovation | Status |
+|-------|------|----------------|--------|
+| [Dropout](papers/dropout/) | 2014 | Regularization via random neuron dropping | ✅ Complete |
+| [Forgetting Transformer (FoX)](papers/forgetting_transformer/) | 2025 | O(1) memory attention with forget gates | ✅ 6/6 claims verified |
 
 ---
 
-## 🏆 Highlights
+## 🎯 Project Goals
 
-### Forgetting Transformer (FoX)
-- **All 6 paper claims verified** ✅
-- 10% lower perplexity on WikiText-2 (174.19 vs 193.37)
-- O(1) memory with recurrent formulation
-- 16x length extrapolation (128 → 2048 tokens)
+1. **Implement** research papers from scratch (not just use libraries)
+2. **Understand** the math and intuition behind each innovation
+3. **Verify** paper claims with reproducible experiments
+4. **Document** learnings for the community
 
 ---
 
 ## 🚀 Quick Start
 
 ```bash
-# Clone
 git clone https://github.com/iushv/ml_research_papers.git
 cd ml_research_papers
 
-# Navigate to a paper
-cd papers/forgetting_transformer
+# Pick a paper
+cd papers/dropout  # or papers/forgetting_transformer
 
-# Setup
+# Setup environment
 python -m venv .venv
 source .venv/bin/activate
-pip install -r requirements.txt
+pip install torch numpy matplotlib
 
 # Run experiments
-python src/verify_claims.py           # Verify paper claims
-python src/large_scale_experiments.py # WikiText-2 benchmark
+python src/experiment.py
 ```
 
 ---
 
-## 📁 Project Structure
+## 📁 Repository Structure
 
 ```
-arxiv_paper_implementation/
+ml_research_papers/
 ├── papers/
-│   └── forgetting_transformer/     # FoX implementation
-│       ├── src/                    # Code
-│       ├── results/                # Experiment data
-│       ├── notebooks/              # Jupyter notebooks
-│       ├── FINDINGS.md             # Detailed analysis
-│       └── README.md               # Paper guide
-├── FINDINGS.md                     # Summary of all findings
+│   ├── dropout/                    # Dropout (2014)
+│   │   ├── src/
+│   │   │   ├── my_dropout.py       # Custom Dropout implementation
+│   │   │   ├── my_network.py       # Neural network with Dropout
+│   │   │   └── experiment.py       # Training loop & comparison
+│   │   ├── results/                # Visualizations
+│   │   └── README.md               # Paper-specific guide
+│   │
+│   └── forgetting_transformer/     # FoX (2025)
+│       ├── src/
+│       │   ├── forgetting_attention.py
+│       │   ├── recurrent_attention.py
+│       │   └── large_scale_experiments.py
+│       ├── results/
+│       └── README.md
+│
 ├── README.md                       # This file
-├── pyproject.toml                  # Dependencies (uv)
-└── .venv/                          # Virtual environment
+└── pyproject.toml                  # Dependencies
 ```
 
 ---
 
-## 📖 References
+## 📊 Highlight Results
 
-- [Forgetting Transformer Paper (arXiv:2503.03420)](https://arxiv.org/abs/2503.03420)
+### Dropout
+```
+Without Dropout: Train=100%, Test=89% (10.7% overfit gap)
+With Dropout:    Train=93%,  Test=91% (1.7% gap) ✅
+```
+
+### Forgetting Transformer
+```
+Standard Transformer: PPL=193.37
+FoX (Parallel):       PPL=174.19 (10% better) ✅
+FoX (Recurrent):      O(1) memory, 16x length extrapolation ✅
+```
 
 ---
 
-*Built for learning, research, and critical evaluation of ML papers.*
+## 🔗 Links
+
+- [Dropout Paper (2014)](https://jmlr.org/papers/v15/srivastava14a.html)
+- [Forgetting Transformer Paper (2025)](https://arxiv.org/abs/2503.03420)
+
+---
+
+## 📖 Learning Resources
+
+Each paper folder contains detailed learning notes covering:
+- Mathematical foundations
+- Step-by-step implementation guide
+- Training loop mechanics
+- Common pitfalls and debugging tips
+
+---
+
+*Built for learning, research, and the open-source ML community.* ⭐
