@@ -1,4 +1,4 @@
-# 🧠 Forgetting Transformer (FoX)
+# Forgetting Transformer (FoX)
 
 **Paper**: "Forgetting Transformer: Softmax Attention with a Forget Gate"  
 **Authors**: Zhixuan Lin, Evgenii Nikishin, Xu Owen He, Aaron Courville (2025)  
@@ -6,20 +6,20 @@
 
 ---
 
-## ✅ All 6 Paper Claims Verified
+## All 6 Paper Claims Verified
 
 | Claim | Status | Evidence |
 |-------|--------|----------|
-| Minimal Parameter Overhead | ✅ | 0.0085% extra |
-| Better Language Modeling | ✅ | 10% lower PPL (174 vs 193) |
-| Length Extrapolation | ✅ | 16x (128→2048 tokens) |
-| O(1) Memory | ✅ | Recurrent mode implemented |
-| No Positional Embeddings | ✅ | Works without PE |
-| Meaningful Gate Patterns | ✅ | Input-dependent learning |
+| Minimal Parameter Overhead | Verified | 0.0085% extra |
+| Better Language Modeling | Verified | 10% lower PPL (174 vs 193) |
+| Length Extrapolation | Verified | 16x (128→2048 tokens) |
+| O(1) Memory | Verified | Recurrent mode implemented |
+| No Positional Embeddings | Verified | Works without PE |
+| Meaningful Gate Patterns | Verified | Input-dependent learning |
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ```bash
 cd src
@@ -30,7 +30,7 @@ python recurrent_attention.py     # O(1) memory test
 
 ---
 
-## 📊 Key Results
+## Key Results
 
 | Model | WikiText-2 PPL ↓ |
 |-------|------------------|
@@ -40,7 +40,7 @@ python recurrent_attention.py     # O(1) memory test
 
 ---
 
-## 💡 Key Innovation
+## Key Innovation
 
 FoX adds a **data-dependent forget gate** to attention:
 
@@ -56,7 +56,7 @@ This enables:
 
 ---
 
-## 📁 Files
+## Files
 
 ```
 forgetting_transformer/
@@ -73,7 +73,7 @@ forgetting_transformer/
 
 ---
 
-## 🎯 Use Cases
+## Use Cases
 
 - **Streaming Agents**: Infinite context without memory resets
 - **Edge Devices**: Fixed RAM regardless of context length
