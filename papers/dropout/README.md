@@ -1,4 +1,4 @@
-# 🎲 Dropout: Preventing Neural Network Overfitting
+# Dropout: Preventing Neural Network Overfitting
 
 **Paper**: "Dropout: A Simple Way to Prevent Neural Networks from Overfitting"  
 **Authors**: Srivastava, Hinton, Krizhevsky, Sutskever, Salakhutdinov (2014)  
@@ -6,7 +6,7 @@
 
 ---
 
-## 🎯 What You'll Learn
+## What You'll Learn
 
 | File | Concepts |
 |------|----------|
@@ -16,7 +16,7 @@
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ```bash
 cd src
@@ -27,18 +27,18 @@ python experiment.py    # Full experiment
 
 ---
 
-## 📊 Results
+## Results
 
 ```
-Without Dropout: Train=100%, Test=89% → 10.7% overfit gap ❌
-With Dropout:    Train=93%,  Test=91% → 1.7% gap ✅
+Without Dropout: Train=100%, Test=89% → 10.7% overfit gap
+With Dropout:    Train=93%,  Test=91% → 1.7% gap
 ```
 
 **Dropout reduces overfitting by 84%!**
 
 ---
 
-## 💡 Key Concepts
+## Key Concepts
 
 ### The Dropout Formula
 ```python
@@ -67,7 +67,7 @@ model.eval()   # Dropout OFF ← Don't forget this!
 
 ---
 
-## 📁 Files
+## Files
 
 ```
 dropout/
