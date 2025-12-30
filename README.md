@@ -86,14 +86,14 @@ FoX (Recurrent):      O(1) memory, 16x length extrapolation
 
 ---
 
-## 🔗 Links
+## Links
 
 - [Dropout Paper (2014)](https://jmlr.org/papers/v15/srivastava14a.html)
 - [Forgetting Transformer Paper (2025)](https://arxiv.org/abs/2503.03420)
 
 ---
 
-## 📖 Learning Resources
+## Learning Resources
 
 Each paper folder contains detailed learning notes covering:
 - Mathematical foundations
