@@ -1,19 +1,19 @@
-# 🧠 ML Research Papers
+# ML Research Papers
 
 A collection of **from-scratch implementations** of foundational and novel ML/AI research papers, with detailed learning notes and verified experiments.
 
 ---
 
-## 📚 Implemented Papers
+## Implemented Papers
 
 | Paper | Year | Key Innovation | Status |
 |-------|------|----------------|--------|
-| [Dropout](papers/dropout/) | 2014 | Regularization via random neuron dropping | ✅ Complete |
-| [Forgetting Transformer (FoX)](papers/forgetting_transformer/) | 2025 | O(1) memory attention with forget gates | ✅ 6/6 claims verified |
+| [Dropout](papers/dropout/) | 2014 | Regularization via random neuron dropping | Complete |
+| [Forgetting Transformer (FoX)](papers/forgetting_transformer/) | 2025 | O(1) memory attention with forget gates | 6/6 claims verified |
 
 ---
 
-## 🎯 Project Goals
+## Project Goals
 
 1. **Implement** research papers from scratch (not just use libraries)
 2. **Understand** the math and intuition behind each innovation
@@ -22,7 +22,7 @@ A collection of **from-scratch implementations** of foundational and novel ML/AI
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ```bash
 git clone https://github.com/iushv/ml_research_papers.git
@@ -42,7 +42,7 @@ python src/experiment.py
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```
 ml_research_papers/
@@ -69,19 +69,19 @@ ml_research_papers/
 
 ---
 
-## 📊 Highlight Results
+## Highlight Results
 
 ### Dropout
 ```
 Without Dropout: Train=100%, Test=89% (10.7% overfit gap)
-With Dropout:    Train=93%,  Test=91% (1.7% gap) ✅
+With Dropout:    Train=93%,  Test=91% (1.7% gap) 
 ```
 
 ### Forgetting Transformer
 ```
 Standard Transformer: PPL=193.37
-FoX (Parallel):       PPL=174.19 (10% better) ✅
-FoX (Recurrent):      O(1) memory, 16x length extrapolation ✅
+FoX (Parallel):       PPL=174.19 (10% better)
+FoX (Recurrent):      O(1) memory, 16x length extrapolation
 ```
 
 ---
