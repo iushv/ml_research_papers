@@ -1,0 +1,11 @@
+# Local files - not pushed to repo
+seq2seq_attention.py
+social_posts.md
+seq2seq_architecture.png
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/

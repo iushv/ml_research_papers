@@ -1,6 +1,6 @@
 # ML Research Papers
 
-A collection of **from-scratch implementations** of foundational and novel ML/AI research papers, with detailed learning notes and verified experiments.
+A collection of **from-scratch implementations** of foundational and innovative ML/AI research papers, with detailed learning notes and verified experiments.
 
 ---
 
@@ -9,6 +9,7 @@ A collection of **from-scratch implementations** of foundational and novel ML/AI
 | Paper | Year | Key Innovation | Status |
 |-------|------|----------------|--------|
 | [Dropout](papers/dropout/) | 2014 | Regularization via random neuron dropping | Complete |
+| [Seq2Seq with Attention](papers/seq2seq_attention/) | 2014/2015 | Encoder-decoder with Luong attention | Complete |
 | [Forgetting Transformer (FoX)](papers/forgetting_transformer/) | 2025 | O(1) memory attention with forget gates | 6/6 claims verified |
 
 ---
@@ -29,15 +30,15 @@ git clone https://github.com/iushv/ml_research_papers.git
 cd ml_research_papers
 
 # Pick a paper
-cd papers/dropout  # or papers/forgetting_transformer
+cd papers/seq2seq_attention  # or papers/dropout
 
 # Setup environment
 python -m venv .venv
 source .venv/bin/activate
-pip install torch numpy matplotlib
+pip install torch
 
 # Run experiments
-python src/experiment.py
+python train.py
 ```
 
 ---
@@ -48,20 +49,15 @@ python src/experiment.py
 ml_research_papers/
 ├── papers/
 │   ├── dropout/                    # Dropout (2014)
-│   │   ├── src/
-│   │   │   ├── my_dropout.py       # Custom Dropout implementation
-│   │   │   ├── my_network.py       # Neural network with Dropout
-│   │   │   └── experiment.py       # Training loop & comparison
-│   │   ├── results/                # Visualizations
-│   │   └── README.md               # Paper-specific guide
-│   │
+│   ├── seq2seq_attention/          # Seq2Seq + Luong Attention (2014/2015)
+│   │   ├── models/
+│   │   │   ├── encoder.py
+│   │   │   ├── attention.py
+│   │   │   ├── decoder.py
+│   │   │   └── seq2seq.py
+│   │   ├── train.py
+│   │   └── README.md
 │   └── forgetting_transformer/     # FoX (2025)
-│       ├── src/
-│       │   ├── forgetting_attention.py
-│       │   ├── recurrent_attention.py
-│       │   └── large_scale_experiments.py
-│       ├── results/
-│       └── README.md
 │
 ├── README.md                       # This file
 └── pyproject.toml                  # Dependencies
@@ -74,7 +70,14 @@ ml_research_papers/
 ### Dropout
 ```
 Without Dropout: Train=100%, Test=89% (10.7% overfit gap)
-With Dropout:    Train=93%,  Test=91% (1.7% gap) 
+With Dropout:    Train=93%,  Test=91% (1.7% gap)
+```
+
+### Seq2Seq with Attention
+```
+20M trainable parameters
+Loss: 8.5 -> 7.9 in 3 epochs
+Greedy decoding inference working
 ```
 
 ### Forgetting Transformer
@@ -89,6 +92,8 @@ FoX (Recurrent):      O(1) memory, 16x length extrapolation
 ## Links
 
 - [Dropout Paper (2014)](https://jmlr.org/papers/v15/srivastava14a.html)
+- [Seq2Seq Paper (2014)](https://arxiv.org/abs/1409.3215)
+- [Luong Attention Paper (2015)](https://arxiv.org/abs/1508.04025)
 - [Forgetting Transformer Paper (2025)](https://arxiv.org/abs/2503.03420)
 
 ---
@@ -103,4 +108,4 @@ Each paper folder contains detailed learning notes covering:
 
 ---
 
-*Built for learning, research, and the open-source ML community.* ⭐
+*Built for learning, research, and the open-source ML community.*
