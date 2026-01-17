@@ -1,83 +1,43 @@
 # ML Research Papers
 
-A collection of **from-scratch implementations** of foundational and innovative ML/AI research papers, with detailed learning notes and verified experiments.
+From-scratch implementations of ML/AI research papers with verified experiments.
+
+---
+
+## What This Is
+
+I learn best by building things, not reading about them. This repo is where I implement research papers from scratch to actually understand what's happening under the hood.
+
+No libraries doing the heavy lifting. Just PyTorch, numpy, and the original papers.
 
 ---
 
 ## Implemented Papers
 
-| Paper | Year | Key Innovation | Status |
-|-------|------|----------------|--------|
-| [Dropout](papers/dropout/) | 2014 | Regularization via random neuron dropping | Complete |
-| [Seq2Seq with Attention](papers/seq2seq_attention/) | 2014/2015 | Encoder-decoder with Luong attention | Complete |
-| [Forgetting Transformer (FoX)](papers/forgetting_transformer/) | 2025 | O(1) memory attention with forget gates | 6/6 claims verified |
+| Paper | Year | What I Learned |
+|-------|------|----------------|
+| [Dropout](papers/dropout/) | 2014 | Why randomly breaking your network makes it stronger |
+| [Seq2Seq with Attention](papers/seq2seq_attention/) | 2015 | How attention lets decoders focus on relevant parts |
+| [Forgetting Transformer (FoX)](papers/forgetting_transformer/) | 2025 | O(1) memory attention that actually works |
 
 ---
 
-## Project Goals
+## Why From Scratch
 
-1. **Implement** research papers from scratch (not just use libraries)
-2. **Understand** the math and intuition behind each innovation
-3. **Verify** paper claims with reproducible experiments
-4. **Document** learnings for the community
+Most tutorials show you how to call `model.fit()`. That's not really understanding.
 
----
+When you implement dropout yourself, you realize it's embarrassingly simple—just multiply by a random binary mask during training, scale during inference. But until you write those 10 lines of code, it feels like magic.
 
-## Quick Start
-
-```bash
-git clone https://github.com/iushv/ml_research_papers.git
-cd ml_research_papers
-
-# Pick a paper
-cd papers/seq2seq_attention  # or papers/dropout
-
-# Setup environment
-python -m venv .venv
-source .venv/bin/activate
-pip install torch
-
-# Run experiments
-python train.py
-```
+Same with attention. The papers are dense, but the core ideas are often surprisingly elegant once you strip away the notation.
 
 ---
 
-## Repository Structure
-
-```
-ml_research_papers/
-├── papers/
-│   ├── dropout/                    # Dropout (2014)
-│   ├── seq2seq_attention/          # Seq2Seq + Luong Attention (2014/2015)
-│   │   ├── models/
-│   │   │   ├── encoder.py
-│   │   │   ├── attention.py
-│   │   │   ├── decoder.py
-│   │   │   └── seq2seq.py
-│   │   ├── train.py
-│   │   └── README.md
-│   └── forgetting_transformer/     # FoX (2025)
-│
-├── README.md                       # This file
-└── pyproject.toml                  # Dependencies
-```
-
----
-
-## Highlight Results
+## Results
 
 ### Dropout
 ```
-Without Dropout: Train=100%, Test=89% (10.7% overfit gap)
-With Dropout:    Train=93%,  Test=91% (1.7% gap)
-```
-
-### Seq2Seq with Attention
-```
-20M trainable parameters
-Loss: 8.5 -> 7.9 in 3 epochs
-Greedy decoding inference working
+Without Dropout: Train=100%, Test=89% (overfitting)
+With Dropout:    Train=93%,  Test=91% (generalization)
 ```
 
 ### Forgetting Transformer
@@ -89,23 +49,72 @@ FoX (Recurrent):      O(1) memory, 16x length extrapolation
 
 ---
 
-## Links
+## Running the Experiments
 
-- [Dropout Paper (2014)](https://jmlr.org/papers/v15/srivastava14a.html)
-- [Seq2Seq Paper (2014)](https://arxiv.org/abs/1409.3215)
-- [Luong Attention Paper (2015)](https://arxiv.org/abs/1508.04025)
-- [Forgetting Transformer Paper (2025)](https://arxiv.org/abs/2503.03420)
+```bash
+git clone https://github.com/iushv/ml_research_papers.git
+cd ml_research_papers
+
+# Pick a paper
+cd papers/dropout  # or papers/forgetting_transformer
+
+# Setup
+python -m venv .venv
+source .venv/bin/activate
+pip install torch numpy matplotlib
+
+# Run
+python src/experiment.py
+```
 
 ---
 
-## Learning Resources
+## Structure
 
-Each paper folder contains detailed learning notes covering:
-- Mathematical foundations
-- Step-by-step implementation guide
-- Training loop mechanics
-- Common pitfalls and debugging tips
+```
+ml_research_papers/
+├── papers/
+│   ├── dropout/
+│   │   ├── src/
+│   │   │   ├── my_dropout.py      # The actual implementation
+│   │   │   ├── my_network.py      # Simple network to test it
+│   │   │   └── experiment.py      # Training + comparison
+│   │   └── README.md              # Paper-specific notes
+│   │
+│   ├── seq2seq_attention/
+│   │   ├── models/
+│   │   │   ├── encoder.py         # Bidirectional LSTM encoder
+│   │   │   ├── attention.py       # Luong attention mechanism
+│   │   │   ├── decoder.py         # Attention-based decoder
+│   │   │   └── seq2seq.py         # Full model
+│   │   ├── train.py
+│   │   └── README.md
+│   │
+│   └── forgetting_transformer/
+│       ├── src/
+│       │   ├── forgetting_attention.py
+│       │   ├── recurrent_attention.py
+│       │   └── large_scale_experiments.py
+│       └── README.md
+│
+└── pyproject.toml
+```
+
+Each paper folder has its own README with:
+- The core insight in plain English
+- Step-by-step implementation notes
+- Pitfalls I ran into
+- Visual results
 
 ---
 
-*Built for learning, research, and the open-source ML community.*
+## Papers I Want to Implement Next
+
+- [ ] Mamba (2024) — State space models
+- [ ] LoRA (2021) — Low-rank adaptation
+- [ ] BERT (2018) — Masked language modeling
+- [ ] Transformer (2017) — The original "Attention Is All You Need"
+
+---
+
+Learning in public. Feel free to use these implementations or point out where I got things wrong.
